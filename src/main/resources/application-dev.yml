@@ -22,6 +22,10 @@ spring:
         order_inserts: true     # INSERT 순서 최적화
         order_updates: true     # UPDATE 순서 최적화
 
+  cloud:
+    gcp:
+      storage:
+        enabled: false   # dev 환경은 MinIO 사용, GCP Storage 자동설정 비활성화
   data:
     redis:
       host: localhost
