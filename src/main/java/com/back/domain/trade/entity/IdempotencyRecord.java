@@ -2,14 +2,13 @@ package com.back.domain.trade.entity;
 
 import com.back.global.jpa.entity.BaseEntity;
 import jakarta.persistence.*;
-import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 @Entity
 @Table(name = "idempotency_records")
 @Getter
-@NoArgsConstructor(access = AccessLevel.PROTECTED)
+@NoArgsConstructor
 public class IdempotencyRecord extends BaseEntity {
     @Column(name = "idempotency_key", nullable = false, length = 64)
     private String idempotencyKey;
@@ -27,6 +26,8 @@ public class IdempotencyRecord extends BaseEntity {
         this.status = status;
         this.responseJson = responseJson;
     }
+
+
 
     public void complete(String responseJson) {
         this.status = IdempotencyStatus.COMPLETED;
